@@ -47,7 +47,7 @@ public class Drivetrain extends SubsystemBase{
 
     private void initMotor(CANSparkMax motor){
         motor.setOpenLoopRampRate(20);
-        motor.setIdleMode(IdleMode.kCoast);
+        motor.setIdleMode(IdleMode.kBrake);
         motor.setSmartCurrentLimit(40);
     }
 
@@ -75,5 +75,4 @@ public class Drivetrain extends SubsystemBase{
     public void periodic() {
         diffDrive.curvatureDrive(speed, rotation, quickTurn);
     }
-    
 }

@@ -9,4 +9,9 @@ public interface ControlBoard {
     public double leftTrigger();
 
     public double leftX();
+
+    // ========Other Subsystems==============
+    public boolean rightBumper();
+
+    public boolean leftBumper();
 }

@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class SingleControl implements ControlBoard{
     private XboxController driver = new XboxController(0);
 
+
+    //====Drivetrain====
     public double rightTrigger(){
         return driver.getRightTriggerAxis();
     }
@@ -20,5 +22,14 @@ public class SingleControl implements ControlBoard{
 
     public double leftX(){
         return driver.getLeftX();
+    }
+
+    //====Other Subsystems====
+    public boolean rightBumper(){
+        return driver.getRightBumper();
+    }
+
+    public boolean leftBumper(){
+        return driver.getLeftBumper();
     }
 }
