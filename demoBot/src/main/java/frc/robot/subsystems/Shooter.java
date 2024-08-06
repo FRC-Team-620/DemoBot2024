@@ -10,6 +10,7 @@ public class Shooter extends SubsystemBase{
     private CANSparkMax shooterMotor;
     private RelativeEncoder relativeEncoder;
 
+    // maybe we should try to use a bangbang or a simple pid control
     public Shooter(){
         this.shooterMotor.setOpenLoopRampRate(20);
         this.shooterMotor.setIdleMode(IdleMode.kCoast);
@@ -29,6 +30,7 @@ public class Shooter extends SubsystemBase{
     @Override
     public void periodic() {
         //what is needed?
+        //maybe post some important values to the smart dash???
     }
 }
  
