@@ -22,13 +22,13 @@ public class Shooter extends SubsystemBase{
         return this.relativeEncoder.getVelocity();
     }
 
-    public void setSpeed(int RPM){
-        this.shooterMotor.set(RPM);
+    public void setSpeed(double speed){
+        this.shooterMotor.set(speed);
     }
 
     @Override
     public void periodic() {
-        //what is needed?
+        //what is needed if not using a PID loop?
     }
 }
  

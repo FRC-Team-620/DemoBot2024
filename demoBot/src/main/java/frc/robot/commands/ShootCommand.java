@@ -21,7 +21,7 @@ public class ShootCommand extends Command{
     public void execute() {
         // TODO Auto-generated method stub
         if (control.rightBumper()){
-            shooter.setSpeed(5000);
+            shooter.setSpeed(1);
         } else shooter.setSpeed(0);
         //Is there a way to just let the motor coast to a stop instead of brake to 0 RPM?
     }
