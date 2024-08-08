@@ -20,8 +20,8 @@ public class DriveCommand extends Command{
     public void execute() {
         // We could do this calculation in single control to simplify our code ^_^ 
         double speed;
-        double rightTrigger = control.rightTrigger();
-        double leftTrigger = control.leftTrigger();
+        double rightTrigger = control.rightTrigger() * control.rightTrigger();
+        double leftTrigger = control.leftTrigger() * control.rightTrigger();
         if (rightTrigger >= leftTrigger) speed = rightTrigger;
         else speed = leftTrigger;
         
