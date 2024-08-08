@@ -19,7 +19,8 @@ public class ShootCommand extends Command{
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
+        //needs intake subsystem
+        //runs the rear pulley after the RPM reaches a certain value to feed the ball into the shooter
         if (control.rightBumper()){
             shooter.setSpeed(1);
         } else shooter.setSpeed(0);
