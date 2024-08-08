@@ -35,11 +35,12 @@ public class intakeCommand extends Command{
         return speeds;
     }
 
-
     @Override
     public void execute() {
         // TODO Auto-generated method stub
-        double[] speeds = calcMotorSpeeds();
-        intake.setIntake(speeds[0], speeds[1], speeds[2]);
+        if (control.leftBumper()){
+            double[] speeds = calcMotorSpeeds();
+            intake.setIntake(speeds[0], speeds[1], speeds[2]);
+        }
     }
 }
