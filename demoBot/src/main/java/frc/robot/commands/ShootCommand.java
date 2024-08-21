@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.controlboard.ControlBoard;
 
@@ -18,6 +19,7 @@ public class ShootCommand extends Command{
         this.shooter = shooter;
         this.control = control;
         pidController.setTolerance(10, 20);
+        SmartDashboard.putData("ShooterRPM", pidController);
 
         addRequirements(shooter);
     }
@@ -40,9 +42,14 @@ public class ShootCommand extends Command{
     }
 
     @Override
+    public void initialize() {
+        pidController.setSetpoint(0);
+    }
+
+    @Override
     public boolean isFinished() {
         // TODO Auto-generated method stub
-        return pidController.atSetpoint();
+        return pidController.atSetpoint() & pidController.getSetpoint() != 0;
     }
 
 
