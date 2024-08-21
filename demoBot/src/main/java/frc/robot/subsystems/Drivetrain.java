@@ -4,6 +4,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -13,10 +14,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Drivetrain extends SubsystemBase{
-    private CANSparkMax leftFront;
-    private CANSparkMax leftRear;
-    private CANSparkMax rightFront;
-    private CANSparkMax rightRear;
+    // we should also declare/initiate the gyro here to set up our robot odometry
+    private CANSparkMax leftFront = new CANSparkMax(1, MotorType.kBrushless);
+    private CANSparkMax rightFront = new CANSparkMax(2, MotorType.kBrushless);
+    private CANSparkMax leftRear = new CANSparkMax(3, MotorType.kBrushless);
+    private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
 
     private DifferentialDrive diffDrive;
     private double speed;
@@ -42,6 +44,7 @@ public class Drivetrain extends SubsystemBase{
 		rightRearEncoder = this.rightRear.getEncoder();
 
         diffDrive = new DifferentialDrive(rightFront, leftFront);
+        // this line down here sets up the robot odometry; the DifferentialDriveOdometry takes three arguments: rotation(rotation2d, left encoder reading and right encoder reading
         //odometry = new DifferentialDriveOdometry(this.getRotation2d, this.leftFrontEncoder.getPosition(), this.rightFrontEncoder.getPositiobn());
     }
 
@@ -57,7 +60,7 @@ public class Drivetrain extends SubsystemBase{
     }
 
     // public Rotation2d getRotation2d(){
-    //     double degrees = -MathUtil.inputModulus(this.pigeon.getYaw(), -180, 180);
+        // double degrees = -MathUtil.inputModulus(this.pigeon.getYaw(), -180, 180);
     //     return Rotation2d.fromDegrees(degrees);
     // }
 

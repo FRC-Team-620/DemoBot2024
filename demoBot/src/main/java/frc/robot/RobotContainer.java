@@ -8,11 +8,14 @@ import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ShootCommand;
 import frc.robot.controlboard.ControlBoard;
 import frc.robot.controlboard.SingleControl;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -28,18 +31,20 @@ public class RobotContainer {
   public final ControlBoard control;
 
   private final Drivetrain drivetrain = new Drivetrain();
-
+  private final Shooter shooter = new Shooter();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
-    private final DriveCommand driveCommand;
+  private final DriveCommand driveCommand;
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     this.control = new SingleControl();
 
     this.driveCommand = new DriveCommand(this.drivetrain, this.control);
+    ShootCommand shootCommand = new ShootCommand(this.control, this.shooter);
+    SmartDashboard.putData("ShooterCommand", shootCommand);
 
     drivetrain.setDefaultCommand(new DriveCommand(this.drivetrain, this.control));
 
