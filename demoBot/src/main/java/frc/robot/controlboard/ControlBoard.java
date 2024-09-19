@@ -8,7 +8,7 @@ public interface ControlBoard {
 
     public double leftTrigger();
 
-    public double leftX();
+    public double rightX();
 
     // ========Other Subsystems==============
     public boolean rightBumper();

@@ -28,7 +28,7 @@ public class DriveCommand extends Command{
         //should speed be squared to make input more smooth?
         //yes that would make the control input much more smooth
 
-        drivetrain.setCurvitureDrive(speed, control.leftX(), true);
+        drivetrain.setCurvitureDrive(speed, control.rightX(), true);
     }
 
 }

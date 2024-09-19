@@ -35,6 +35,7 @@ public class Drivetrain extends SubsystemBase{
         initMotor(leftRear);
         initMotor(rightFront);
         initMotor(rightRear);
+        leftFront.setInverted(true);
 
         setFollowers();
 
@@ -49,6 +50,7 @@ public class Drivetrain extends SubsystemBase{
     }
 
     private void initMotor(CANSparkMax motor){
+        motor.restoreFactoryDefaults();
         motor.setOpenLoopRampRate(20);
         motor.setIdleMode(IdleMode.kBrake);
         motor.setSmartCurrentLimit(40);
@@ -69,7 +71,7 @@ public class Drivetrain extends SubsystemBase{
     // }
     
     public void setCurvitureDrive(double speed, double rotation, boolean quickTurn){
-        this.speed = speed;
+        this.speed = -speed;
         this.rotation = rotation;
         this.quickTurn = quickTurn;
     }

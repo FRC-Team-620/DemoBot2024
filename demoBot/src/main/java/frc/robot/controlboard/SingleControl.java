@@ -20,8 +20,8 @@ public class SingleControl implements ControlBoard{
         return driver.getLeftTriggerAxis();
     }
 
-    public double leftX(){
-        return driver.getLeftX();
+    public double rightX(){
+        return driver.getRightX();
     }
 
     //====Other Subsystems====
