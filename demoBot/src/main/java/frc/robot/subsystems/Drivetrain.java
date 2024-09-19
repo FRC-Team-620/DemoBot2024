@@ -77,5 +77,6 @@ public class Drivetrain extends SubsystemBase{
     @Override
     public void periodic() {
         diffDrive.curvatureDrive(speed, rotation, quickTurn);
+        System.out.println("Speed: " + speed);
     }
 }

@@ -21,9 +21,9 @@ public class DriveCommand extends Command{
         // We could do this calculation in single control to simplify our code ^_^ 
         double speed;
         double rightTrigger = control.rightTrigger() * control.rightTrigger();
-        double leftTrigger = control.leftTrigger() * control.rightTrigger();
+        double leftTrigger = control.leftTrigger() * control.leftTrigger();
         if (rightTrigger >= leftTrigger) speed = rightTrigger;
-        else speed = leftTrigger;
+        else speed = -leftTrigger;
         
         //should speed be squared to make input more smooth?
         //yes that would make the control input much more smooth

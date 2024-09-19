@@ -46,7 +46,7 @@ public class RobotContainer {
     ShootCommand shootCommand = new ShootCommand(this.control, this.shooter);
     SmartDashboard.putData("ShooterCommand", shootCommand);
 
-    drivetrain.setDefaultCommand(new DriveCommand(this.drivetrain, this.control));
+    drivetrain.setDefaultCommand(this.driveCommand);
 
     configureBindings();
   }
