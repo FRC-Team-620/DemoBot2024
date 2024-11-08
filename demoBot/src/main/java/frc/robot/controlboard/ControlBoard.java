@@ -11,7 +11,7 @@ public interface ControlBoard {
     public double rightX();
 
     // ========Other Subsystems==============
-    public boolean rightBumper();
+    public boolean spinupFlywheel();
 
     public boolean leftBumper();
 }

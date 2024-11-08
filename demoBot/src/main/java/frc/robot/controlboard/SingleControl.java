@@ -25,7 +25,7 @@ public class SingleControl implements ControlBoard{
     }
 
     //====Other Subsystems====
-    public boolean rightBumper(){
+    public boolean spinupFlywheel(){
         return driver.getRightBumper();
     }
 
