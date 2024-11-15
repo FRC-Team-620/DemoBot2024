@@ -70,7 +70,7 @@ public class Drivetrain extends SubsystemBase{
     //     return this.odometry.getPose2d();
     // }
     
-    public void setCurvitureDrive(double speed, double rotation, boolean quickTurn){
+    public void setCurvatureDrive(double speed, double rotation, boolean quickTurn){
         this.speed = -speed;
         this.rotation = rotation;
         this.quickTurn = quickTurn;
