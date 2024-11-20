@@ -6,19 +6,16 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase{
     // we should also declare/initiate the gyro here to set up our robot odometry
-    private CANSparkMax leftFront = new CANSparkMax(1, MotorType.kBrushless);
-    private CANSparkMax rightFront = new CANSparkMax(2, MotorType.kBrushless);
-    private CANSparkMax leftRear = new CANSparkMax(3, MotorType.kBrushless);
-    private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
+    private CANSparkMax leftFront = new CANSparkMax(Constants.DRIVE_LEFT_FRONT_ID, MotorType.kBrushless);
+    private CANSparkMax rightFront = new CANSparkMax(Constants.DRIVE_RIGHT_FRONT_ID, MotorType.kBrushless);
+    private CANSparkMax leftBack = new CANSparkMax(Constants.DRIVE_LEFT_BACK_ID, MotorType.kBrushless);
+    private CANSparkMax rightBack = new CANSparkMax(Constants.DRIVE_RIGHT_BACK_ID, MotorType.kBrushless);
 
     private DifferentialDrive diffDrive;
     private double speed;
@@ -32,17 +29,17 @@ public class Drivetrain extends SubsystemBase{
 
     public Drivetrain (){
         initMotor(leftFront);
-        initMotor(leftRear);
+        initMotor(leftBack);
         initMotor(rightFront);
-        initMotor(rightRear);
+        initMotor(rightBack);
         leftFront.setInverted(true);
 
         setFollowers();
 
         leftFrontEncoder = this.leftFront.getEncoder();
 		rightFrontEncoder = this.rightFront.getEncoder();
-		leftRearEncoder = this.leftRear.getEncoder();
-		rightRearEncoder = this.rightRear.getEncoder();
+		leftRearEncoder = this.leftBack.getEncoder();
+		rightRearEncoder = this.rightBack.getEncoder();
 
         diffDrive = new DifferentialDrive(rightFront, leftFront);
         // this line down here sets up the robot odometry; the DifferentialDriveOdometry takes three arguments: rotation(rotation2d, left encoder reading and right encoder reading
@@ -57,8 +54,8 @@ public class Drivetrain extends SubsystemBase{
     }
 
     private void setFollowers(){
-        leftRear.follow(leftFront);
-        rightRear.follow(rightFront);
+        leftBack.follow(leftFront);
+        rightBack.follow(rightFront);
     }
 
     // public Rotation2d getRotation2d(){
