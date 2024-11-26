@@ -4,10 +4,10 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.ExtakeCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShootCommand;
 import frc.robot.controlboard.ControlBoard;
@@ -17,71 +17,59 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
 /**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in
+ * the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of
+ * the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  public final ControlBoard control;
+    // The robot's subsystems and commands are defined here...
+    public final ControlBoard control;
+    private final Drivetrain drivetrain;
+    private final Intake intake;
+    private final Shooter shooter;
 
-  private final Drivetrain drivetrain = new Drivetrain();
-  private final Shooter shooter = new Shooter();
-  private final Intake intake = new Intake();
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController = new CommandXboxController(Constants.kDriverControllerPort);
+    private final DriveCommand driveCommand;
+    private final IntakeCommand intakeCommand;
+    private final ExtakeCommand extakeCommand;
+    private final ShootCommand shootCommand;
 
-  private final DriveCommand driveCommand;
-  private final IntakeCommand intakeCommand;
-  private final ShootCommand shootCommand;
+    public RobotContainer() {
+        this.control = new SingleControl();
+        this.drivetrain = new Drivetrain();
+        this.intake = new Intake();
+        this.shooter = new Shooter();
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-    // Configure the trigger bindings
-    this.control = new SingleControl();
+        this.driveCommand = new DriveCommand(this.drivetrain, this.control);
+        this.intakeCommand = new IntakeCommand(this.intake);
+        this.extakeCommand = new ExtakeCommand(this.intake);
+        this.shootCommand = new ShootCommand(this.shooter);
 
-    this.driveCommand = new DriveCommand(this.drivetrain, this.control);
-    this.intakeCommand = new IntakeCommand(this.control, this.intake);
-    this.shootCommand = new ShootCommand(this.control, this.shooter);
-    
-    SmartDashboard.putData("DriveCommand", driveCommand);
-    SmartDashboard.putData("IntakeCommand", intakeCommand);
-    SmartDashboard.putData("ShootCommand", shootCommand);
+        drivetrain.setDefaultCommand(this.driveCommand);
 
-    drivetrain.setDefaultCommand(this.driveCommand);
-    shooter.setDefaultCommand(this.shootCommand);
-    intake.setDefaultCommand(this.intakeCommand);
+        configureBindings();
+    }
 
-    configureBindings();
-  }
-
-  /**
-   * Use this method to define your trigger->command mappings. Triggers can be created via the
-   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
-   * predicate, or via the named factories in {@link
-   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
-   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
-   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
-   * joysticks}.
-   */
-  private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-  //   new Trigger(m_exampleSubsystem::exampleCondition)
-  //       .onTrue(new ExampleCommand(m_exampleSubsystem));
-
-  //   // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
-  //   // cancelling on release.
-  //   m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-  // }
-
-  // /**
-  //  * Use this to pass the autonomous command to the main {@link Robot} class.
-  //  *
-  //  * @return the command to run in autonomous
-  //  */
-  // public Command getAutonomousCommand() {
-  //   // An example command will be run in autonomous
-  //   return Autos.exampleAuto(m_exampleSubsystem);
-  }
+    /**
+     * Use this method to define your trigger->command mappings. Triggers can be
+     * created via the
+     * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with
+     * an arbitrary
+     * predicate, or via the named factories in {@link
+     * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for
+     * {@link
+     * CommandXboxController
+     * Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
+     * PS4} controllers or
+     * {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
+     * joysticks}.
+     */
+    private void configureBindings() {
+        this.control.intake().whileTrue(intakeCommand);
+        this.control.extake().whileTrue(extakeCommand);
+        this.control.shoot().whileTrue(shootCommand);
+    }
 }

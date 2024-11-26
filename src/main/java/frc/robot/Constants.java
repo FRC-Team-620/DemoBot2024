@@ -4,24 +4,23 @@
 
 package frc.robot;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
- * globally (i.e. public static). Do not put anything functional in this class.
- *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- */
 public class Constants {
-  public static final int kDriverControllerPort = 0;
+    // CONTROLS
+    public static final int DRIVER_CONTROLLER_ID = 0;
 
-  public static final int DRIVE_LEFT_FRONT_ID = 1;
-  public static final int DRIVE_RIGHT_FRONT_ID = 2;
-  public static final int DRIVE_LEFT_BACK_ID = 3;
-  public static final int DRIVE_RIGHT_BACK_ID = 4;
+    // DRIVETRAIN
+    public static final int DRIVE_LEFT_FRONT_ID = 1;
+    public static final int DRIVE_RIGHT_FRONT_ID = 2;
+    public static final int DRIVE_LEFT_BACK_ID = 3;
+    public static final int DRIVE_RIGHT_BACK_ID = 4;
 
-  public static final int SHOOTER_LEFT_ID = 0;
-  public static final int SHOOTER_RIGHT_ID = 1;
-  public static final int INTAKE_FRONT_ID = 2;
-  public static final int INTAKE_BACK_ID = 3;
+    // SHOOTER
+    public static final int SHOOTER_LEFT_ID = 0;
+    public static final int SHOOTER_RIGHT_ID = 1;
+    public static final double SHOOTER_SPEED = 0.5;
+
+    // INTAKE
+    public static final int INTAKE_FRONT_ID = 2;
+    public static final int INTAKE_BACK_ID = 3;
+    public static final double INTAKE_SPEED = 0.5;
 }

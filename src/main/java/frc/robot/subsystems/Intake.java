@@ -11,7 +11,7 @@ public class Intake extends SubsystemBase{
     private double speed;
 
     public Intake() {
-        this.front.setInverted(true);
+        this.back.setInverted(true);
     }
 
     public void setSpeed(double speed) {
@@ -22,6 +22,6 @@ public class Intake extends SubsystemBase{
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("ShooterSpeed", this.speed);
+        SmartDashboard.putNumber("Intake/speed", this.speed);
     }
 }

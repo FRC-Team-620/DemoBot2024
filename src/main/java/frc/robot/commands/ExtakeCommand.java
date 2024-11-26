@@ -4,17 +4,17 @@ import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
-public class IntakeCommand extends Command {
+public class ExtakeCommand extends Command {
     private Intake intake;
 
-    public IntakeCommand(Intake intake) {
+    public ExtakeCommand(Intake intake) {
         this.intake = intake;
         addRequirements(intake);
     }
 
     @Override
     public void execute() {
-        this.intake.setSpeed(Constants.INTAKE_SPEED);
+        this.intake.setSpeed(-Constants.INTAKE_SPEED);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-// import com.revrobotics.RelativeEncoder;
-
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,16 +12,15 @@ public class Shooter extends SubsystemBase {
 
     public Shooter() {
         this.motor.addFollower(follower);
-        this.follower.setInverted(true);
     }
 
     public void setSpeed(double speed) {
-        this.motor.setVoltage(speed);
+        this.motor.set(speed);
         this.speed = speed;
     }
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("ShooterSpeed", this.speed);
+        SmartDashboard.putNumber("Shooter/speed", this.speed);
     }
 }

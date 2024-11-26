@@ -1,15 +1,19 @@
 package frc.robot.controlboard;
 
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 public interface ControlBoard {
     // =========Driver Controls==========
-    public double rightTrigger(); // Forward
+    public double moveForward();
 
-    public double leftTrigger(); // Backward
+    public double moveBackward();
 
-    public double rightX(); // Rotation
+    public double rotate();
 
-    // ========Operator Controls==============
-    public boolean leftBumper(); // Intake
+    // ========Operator Controls=========
+    public Trigger intake();
 
-    public boolean rightBumper(); // Shooter
+    public Trigger extake();
+
+    public Trigger shoot();
 }

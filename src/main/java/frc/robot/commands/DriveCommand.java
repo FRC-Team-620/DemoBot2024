@@ -16,11 +16,11 @@ public class DriveCommand extends Command{
 
     @Override
     public void execute() {
-        double rightTrigger = Math.pow(this.control.rightTrigger(), 2);
-        double leftTrigger = Math.pow(this.control.leftTrigger(), 2);
+        double rightTrigger = Math.pow(this.control.moveForward(), 2);
+        double leftTrigger = Math.pow(this.control.moveBackward(), 2);
         double speed = rightTrigger >= leftTrigger ? rightTrigger : -leftTrigger;
         speed = Math.signum(speed) * Math.pow(speed, 2);
 
-        drivetrain.setCurvatureDrive(speed, this.control.rightX(), true);
+        drivetrain.setCurvatureDrive(speed, this.control.rotate(), true);
     }
 }
