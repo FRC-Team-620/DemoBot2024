@@ -11,6 +11,7 @@ public class Shooter extends SubsystemBase {
     private double speed;
 
     public Shooter() {
+        this.motor.setInverted(true);
         this.motor.addFollower(follower);
     }
 
