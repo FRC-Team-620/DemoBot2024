@@ -13,6 +13,7 @@ public class Constants {
     public static final int DRIVE_RIGHT_FRONT_ID = 2;
     public static final int DRIVE_LEFT_BACK_ID = 3;
     public static final int DRIVE_RIGHT_BACK_ID = 4;
+    public static final boolean SQUARE_INPUTS = true;
 
     // SHOOTER
     public static final int SHOOTER_LEFT_ID = 0;

@@ -4,10 +4,10 @@ import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 
-public class ShootCommand extends Command{
+public class ShootCommand extends Command {
     private Shooter shooter;
 
-    public ShootCommand(Shooter shooter){
+    public ShootCommand(Shooter shooter) {
         this.shooter = shooter;
         addRequirements(shooter);
     }

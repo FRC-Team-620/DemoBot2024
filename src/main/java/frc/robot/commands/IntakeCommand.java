@@ -6,15 +6,18 @@ import frc.robot.Constants;
 
 public class IntakeCommand extends Command {
     private Intake intake;
+    private boolean movingForward;
 
-    public IntakeCommand(Intake intake) {
+    public IntakeCommand(Intake intake, boolean movingForward) {
         this.intake = intake;
+        this.movingForward = movingForward;
         addRequirements(intake);
     }
 
     @Override
     public void execute() {
-        this.intake.setSpeed(Constants.INTAKE_SPEED);
+        double direction = movingForward ? 1.0 : -1.0;
+        this.intake.setSpeed(direction * Constants.INTAKE_SPEED);
     }
 
     @Override

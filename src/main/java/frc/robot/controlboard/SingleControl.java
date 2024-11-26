@@ -12,23 +12,23 @@ public class SingleControl implements ControlBoard {
     private Trigger rightBumper;
     
     public SingleControl() {
-        driver = new XboxController(Constants.DRIVER_CONTROLLER_ID);
-        xButton = new JoystickButton(driver, XboxController.Button.kX.value);
-        yButton = new JoystickButton(driver, XboxController.Button.kY.value);
-        rightBumper = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+        this.driver = new XboxController(Constants.DRIVER_CONTROLLER_ID);
+        this.xButton = new JoystickButton(this.driver, XboxController.Button.kX.value);
+        this.yButton = new JoystickButton(this.driver, XboxController.Button.kY.value);
+        this.rightBumper = new JoystickButton(this.driver, XboxController.Button.kRightBumper.value);
     }
 
     // ====Driver Controls====
-    public double moveForward() {
-        return driver.getRightTriggerAxis();
+    public double forward() {
+        return this.driver.getRightTriggerAxis();
     }
 
-    public double moveBackward() {
-        return driver.getLeftTriggerAxis();
+    public double backward() {
+        return this.driver.getLeftTriggerAxis();
     }
 
     public double rotate() {
-        return driver.getRightX();
+        return this.driver.getRightX();
     }
 
     // ====Operator Controls====
