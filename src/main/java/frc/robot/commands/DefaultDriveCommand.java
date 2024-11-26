@@ -6,12 +6,12 @@ import frc.robot.Constants;
 import frc.robot.controlboard.ControlBoard;
 import frc.robot.subsystems.Drivetrain;
 
-public class DriveCommand extends Command {
+public class DefaultDriveCommand extends Command {
     private Drivetrain drivetrain;
     private final ControlBoard control;
     private boolean squareInputs;
 
-    public DriveCommand(Drivetrain drivetrain, ControlBoard control) {
+    public DefaultDriveCommand(Drivetrain drivetrain, ControlBoard control) {
         this.drivetrain = drivetrain;
         this.control = control;
         addRequirements(this.drivetrain);

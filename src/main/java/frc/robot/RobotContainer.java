@@ -6,7 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.DriveCommand;
+import frc.robot.commands.DefaultDriveCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.DefaultIntakeCommand;
 import frc.robot.commands.DefaultShootCommand;
@@ -56,7 +56,7 @@ public class RobotContainer {
      * joysticks}.
      */
     private void configureBindings() {
-        this.drivetrain.setDefaultCommand(new DriveCommand(this.drivetrain, this.control));
+        this.drivetrain.setDefaultCommand(new DefaultDriveCommand(this.drivetrain, this.control));
         this.intake.setDefaultCommand(new DefaultIntakeCommand(this.intake));
         this.shooter.setDefaultCommand(new DefaultShootCommand(this.shooter));
 
