@@ -14,7 +14,6 @@ public class DefaultShootCommand extends Command {
         this.shooter = shooter;
         addRequirements(shooter);
 
-        this.speed = Constants.SHOOTER_SPEED;
         SmartDashboard.putNumber("Shooter/speed", this.speed);
     }
 
