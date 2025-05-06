@@ -71,8 +71,8 @@ public class Drivetrain extends SubsystemBase{
     // }
     
     public void setCurvitureDrive(double speed, double rotation, boolean quickTurn){
-        this.speed = -speed;
-        this.rotation = rotation;
+        this.speed = -speed * 0.3;
+        this.rotation = rotation * 0.6;
         this.quickTurn = quickTurn;
     }
 
