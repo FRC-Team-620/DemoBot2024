@@ -24,5 +24,6 @@ public class Constants {
     // INTAKE
     public static final int INTAKE_FRONT_ID = 2;
     public static final int INTAKE_BACK_ID = 3;
+    public static final int INTAKE_EXTRA_ID = 4; // figure out what this is
     public static final double INTAKE_SPEED = 0.5;
 }
