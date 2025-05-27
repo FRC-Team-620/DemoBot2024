@@ -24,9 +24,9 @@ public class DefaultDriveCommand extends Command {
     public void execute() {
         this.squareInputs = SmartDashboard.getBoolean("Drivetrain/square_inputs", this.squareInputs);
         double power = this.squareInputs ? 2 : 1;
-        double forward = this.control.forward();
-        double backward = this.control.backward();
-        double speed = forward >= backward ? forward : -backward;
+        double forward = this.control.forward() * 0.6;
+        double backward = this.control.backward() * 0.6;
+        double speed = forward >= backward ? -forward : backward;
         speed = Math.signum(speed) * Math.pow(speed, power);
 
         drivetrain.setCurvatureDrive(speed, this.control.rotate(), true);

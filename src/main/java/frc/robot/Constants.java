@@ -14,7 +14,7 @@ public class Constants {
     public static final int DRIVE_LEFT_BACK_ID = 3;
     public static final int DRIVE_RIGHT_BACK_ID = 4;
     public static final boolean SQUARE_INPUTS = true;
-    public static final double RAMP_RATE = 2.0;
+    public static final double RAMP_RATE = 0.2;
 
     // SHOOTER
     public static final int SHOOTER_LEFT_ID = 0;
