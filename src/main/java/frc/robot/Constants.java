@@ -19,7 +19,7 @@ public class Constants {
     // SHOOTER
     public static final int SHOOTER_LEFT_ID = 0;
     public static final int SHOOTER_RIGHT_ID = 1;
-    public static final double SHOOTER_SPEED = 0.8;
+    public static final double SHOOTER_SPEED = 1; // 0.8
 
     // INTAKE
     public static final int INTAKE_FRONT_ID = 2;

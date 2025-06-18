@@ -26,9 +26,10 @@ public class DefaultDriveCommand extends Command {
         double power = this.squareInputs ? 2 : 1;
         double forward = this.control.forward() * 0.6;
         double backward = this.control.backward() * 0.6;
+        double rotate = -this.control.rotate() * 0.6; 
         double speed = forward >= backward ? -forward : backward;
         speed = Math.signum(speed) * Math.pow(speed, power);
 
-        drivetrain.setCurvatureDrive(speed, this.control.rotate(), true);
+        drivetrain.setCurvatureDrive(speed, rotate, true);
     }
 }
