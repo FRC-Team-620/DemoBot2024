@@ -13,7 +13,7 @@ public class Intake extends SubsystemBase{
     private double speed;
 
     public Intake() {
-        this.back.setInverted(true);
+        this.back.setInverted(false);
         //this.extra.setInverted(true);
     }
 

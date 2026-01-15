@@ -14,7 +14,7 @@ public class Shooter extends SubsystemBase {
 
     public Shooter(PowerDistribution pdp) {
         this.pdp = pdp;
-        this.motor.setInverted(true);
+        this.motor.setInverted(false);
         this.motor.addFollower(follower);
     }
 
