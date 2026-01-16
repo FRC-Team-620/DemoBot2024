@@ -10,12 +10,14 @@ public class SingleControl implements ControlBoard {
     private Trigger xButton;
     private Trigger yButton;
     private Trigger rightBumper;
+    private Trigger leftBumper;
     
     public SingleControl() {
         this.driver = new XboxController(Constants.DRIVER_CONTROLLER_ID);
         this.xButton = new JoystickButton(this.driver, XboxController.Button.kX.value);
         this.yButton = new JoystickButton(this.driver, XboxController.Button.kY.value);
         this.rightBumper = new JoystickButton(this.driver, XboxController.Button.kRightBumper.value);
+        this.leftBumper = new JoystickButton(this.driver, XboxController.Button.kLeftBumper.value);
     }
 
     // ====Driver Controls====
@@ -42,5 +44,9 @@ public class SingleControl implements ControlBoard {
 
     public Trigger shoot() {
         return this.rightBumper;
+    }
+
+    public Trigger backShoot() {
+        return this.leftBumper;
     }
 }

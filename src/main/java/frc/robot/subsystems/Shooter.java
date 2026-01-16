@@ -12,9 +12,9 @@ public class Shooter extends SubsystemBase {
     private Spark follower = new Spark(Constants.SHOOTER_RIGHT_ID);
     private double speed;
 
-    public Shooter(PowerDistribution pdp) {
+    public Shooter(PowerDistribution pdp, boolean inverted) {
         this.pdp = pdp;
-        this.motor.setInverted(false);
+        this.motor.setInverted(inverted);
         this.motor.addFollower(follower);
     }
 
