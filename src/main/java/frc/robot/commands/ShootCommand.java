@@ -17,7 +17,12 @@ public class ShootCommand extends Command {
     @Override
     public void execute() {
         double direction = inverted ? -1.0 : 1.0;
-        this.shooter.setSpeed(direction * Constants.SHOOTER_SPEED);
+        if(inverted){
+            this.shooter.setSpeed(direction * Constants.INTAKE_SPEED);
+        }
+        else{
+            this.shooter.setSpeed(direction * Constants.SHOOTER_SPEED);
+        }
     }
 
     @Override
