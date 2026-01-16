@@ -6,15 +6,18 @@ import frc.robot.Constants;
 
 public class ShootCommand extends Command {
     private Shooter shooter;
+    private boolean inverted;
 
-    public ShootCommand(Shooter shooter) {
+    public ShootCommand(Shooter shooter, boolean inverted) {
         this.shooter = shooter;
+        this.inverted = inverted;
         addRequirements(shooter);
     }
 
     @Override
     public void execute() {
-        this.shooter.setSpeed(Constants.SHOOTER_SPEED);
+        double direction = inverted ? -1.0 : 1.0;
+        this.shooter.setSpeed(direction * Constants.SHOOTER_SPEED);
     }
 
     @Override

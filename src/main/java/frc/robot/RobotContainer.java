@@ -34,16 +34,15 @@ public class RobotContainer {
     private final ControlBoard control;
     private final Drivetrain drivetrain;
     private final Intake intake;
-    private final Shooter forwardShooter;
-    private final Shooter backwardShooter;
+    private final Shooter shooter;
 
     public RobotContainer() {
         this.pdp = new PowerDistribution(0, ModuleType.kCTRE);
         this.control = new SingleControl();
         this.drivetrain = new Drivetrain();
         this.intake = new Intake();
-        this.forwardShooter = new Shooter(this.pdp, false);
-        this.backwardShooter = new Shooter(this.pdp, true);
+        this.shooter = new Shooter(this.pdp);
+        // this.backwardShooter = new Shooter(this.pdp, true);
 
         configureBindings();
     }
@@ -65,12 +64,11 @@ public class RobotContainer {
     private void configureBindings() {
         this.drivetrain.setDefaultCommand(new DefaultDriveCommand(this.drivetrain, this.control));
         this.intake.setDefaultCommand(new DefaultIntakeCommand(this.intake));
-        this.forwardShooter.setDefaultCommand(new DefaultShootCommand(this.forwardShooter));
-        this.backwardShooter.setDefaultCommand(new DefaultShootCommand(this.backwardShooter));
+        this.shooter.setDefaultCommand(new DefaultShootCommand(this.shooter));
 
         this.control.intake().whileTrue(new IntakeCommand(this.intake, true));
         this.control.extake().whileTrue(new IntakeCommand(this.intake, false));
-        this.control.shoot().whileTrue(new ShootCommand(this.forwardShooter));
-        this.control.backShoot().whileTrue(new ShootCommand(this.backwardShooter));
+        this.control.shoot().whileTrue(new ShootCommand(this.shooter, false));
+        this.control.backShoot().whileTrue(new ShootCommand(this.shooter, true));
     }
 }
