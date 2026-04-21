@@ -10,6 +10,7 @@ public class SingleControl implements ControlBoard {
     private Trigger xButton;
     private Trigger yButton;
     private Trigger rightBumper;
+    private Trigger leftBumper;
     
     public SingleControl() {
         this.driver = new XboxController(Constants.DRIVER_CONTROLLER_ID);
@@ -43,4 +44,9 @@ public class SingleControl implements ControlBoard {
     public Trigger shoot() {
         return this.rightBumper;
     }
+    
+    public Trigger unShoot() {
+        return this.leftBumper;
+    }
+    
 }
