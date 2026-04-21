@@ -17,6 +17,7 @@ public class SingleControl implements ControlBoard {
         this.xButton = new JoystickButton(this.driver, XboxController.Button.kX.value);
         this.yButton = new JoystickButton(this.driver, XboxController.Button.kY.value);
         this.rightBumper = new JoystickButton(this.driver, XboxController.Button.kRightBumper.value);
+        this.leftBumper = new JoystickButton(this.driver, XboxController.Button.kLeftBumper.value);
     }
 
     // ====Driver Controls====

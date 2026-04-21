@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DefaultDriveCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShootCommand;
+import frc.robot.commands.UnShootCommand;
 import frc.robot.commands.DefaultIntakeCommand;
 import frc.robot.commands.DefaultShootCommand;
 import frc.robot.controlboard.ControlBoard;
@@ -68,5 +69,7 @@ public class RobotContainer {
         this.control.intake().whileTrue(new IntakeCommand(this.intake, true));
         this.control.extake().whileTrue(new IntakeCommand(this.intake, false));
         this.control.shoot().whileTrue(new ShootCommand(this.shooter));
+        this.control.unShoot().whileTrue(new UnShootCommand(this.shooter));
+
     }
 }
