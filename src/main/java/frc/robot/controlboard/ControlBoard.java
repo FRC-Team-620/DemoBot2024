@@ -16,6 +16,4 @@ public interface ControlBoard {
     public Trigger extake();
 
     public Trigger shoot();
-
-    public Trigger unShoot();
 }

@@ -69,7 +69,6 @@ public class RobotContainer {
         this.control.intake().whileTrue(new IntakeCommand(this.intake, true));
         this.control.extake().whileTrue(new IntakeCommand(this.intake, false));
         this.control.shoot().whileTrue(new ShootCommand(this.shooter));
-        this.control.unShoot().whileTrue(new UnShootCommand(this.shooter));
 
     }
 }
