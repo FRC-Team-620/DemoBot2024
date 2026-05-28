@@ -19,8 +19,8 @@ public class Shooter extends SubsystemBase {
     }
 
     public void setSpeed(double speed) {
-        this.motor.set(-speed);
-        this.speed = -speed;
+        this.motor.set(speed);
+        this.speed = speed;
     }
 
     @Override
